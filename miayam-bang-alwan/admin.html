@@ -1,0 +1,190 @@
+<!DOCTYPE html>
+<html lang="id">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Admin Panel - Miayam & Bakso Bang Alwan</title>
+  <link rel="stylesheet" href="css/style.css">
+  <link rel="icon" href="data:image/svg+xml,<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 100 100'><text y='.9em' font-size='90'>🍜</text></svg>">
+  <style>
+    .badge-status {
+      padding: 4px 10px;
+      border-radius: 20px;
+      font-size: 0.8rem;
+      font-weight: 600;
+    }
+    .badge-status.baru { background: #BBDEFB; color: #1565C0; }
+    .badge-status.diproses { background: #FFE0B2; color: #E65100; }
+    .badge-status.dikirim { background: #C8E6C9; color: #2E7D32; }
+    .badge-status.selesai { background: #E8F5E9; color: #1B5E20; }
+    .badge-status.batal { background: #FFCDD2; color: #C62828; }
+  </style>
+</head>
+<body>
+  <!-- Login -->
+  <div id="loginSection" class="login-page">
+    <div class="login-card">
+      <h2>🍜 Admin Panel</h2>
+      <p class="subtitle">Miayam & Bakso Bang Alwan</p>
+      <form onsubmit="login(event)">
+        <div class="form-group">
+          <label>Password</label>
+          <input type="password" id="password" required placeholder="Masukkan password admin" autofocus>
+        </div>
+        <p id="loginError" style="color:#E53935;font-size:0.9rem;margin-bottom:12px;display:none;"></p>
+        <button type="submit" class="btn btn-primary" style="width:100%;">Masuk</button>
+      </form>
+      <p style="text-align:center;margin-top:20px;font-size:0.85rem;color:#888;">
+        Password default: <code>admin123</code><br>
+        <a href="index.html" style="color:#1E88E5;">← Kembali ke Website</a>
+      </p>
+    </div>
+  </div>
+
+  <!-- Admin Dashboard -->
+  <div id="adminSection" class="admin-layout" style="display:none;">
+    <aside class="admin-sidebar">
+      <div class="logo">🍜 Bang Alwan</div>
+      <ul class="admin-nav">
+        <li><a href="javascript:void(0)" data-page="dashboard" class="active" onclick="showPage('dashboard')">📊 Dashboard</a></li>
+        <li><a href="javascript:void(0)" data-page="products" onclick="showPage('products')">🍜 Produk</a></li>
+        <li><a href="javascript:void(0)" data-page="orders" onclick="showPage('orders')">📦 Pesanan</a></li>
+        <li><a href="index.html" target="_blank">🌐 Lihat Website</a></li>
+        <li><a href="javascript:void(0)" onclick="logout()" style="color:#EF9A9A;">🚪 Keluar</a></li>
+      </ul>
+    </aside>
+
+    <main class="admin-content">
+      <!-- Dashboard Page -->
+      <div id="page-dashboard" class="admin-page">
+        <div class="admin-header">
+          <h2>Dashboard</h2>
+          <span style="color:#666;">Selamat datang, Admin!</span>
+        </div>
+        <div class="stats-row">
+          <div class="stat-card">
+            <h3 id="statProducts">0</h3>
+            <p>Total Produk</p>
+          </div>
+          <div class="stat-card">
+            <h3 id="statOrders">0</h3>
+            <p>Total Pesanan</p>
+          </div>
+          <div class="stat-card">
+            <h3 id="statNew">0</h3>
+            <p>Pesanan Baru</p>
+          </div>
+          <div class="stat-card">
+            <h3 id="statRevenue">Rp 0</h3>
+            <p>Total Pendapatan</p>
+          </div>
+        </div>
+        <div class="table-wrap">
+          <h3 style="padding:18px;">Pesanan Terbaru</h3>
+          <table>
+            <thead>
+              <tr>
+                <th>ID</th>
+                <th>Pelanggan</th>
+                <th>Total</th>
+                <th>Status</th>
+                <th>Tanggal</th>
+              </tr>
+            </thead>
+            <tbody id="recentOrders"></tbody>
+          </table>
+        </div>
+      </div>
+
+      <!-- Products Page -->
+      <div id="page-products" class="admin-page" style="display:none;">
+        <div class="admin-header">
+          <h2>Kelola Produk</h2>
+          <button class="btn btn-primary" onclick="openProductModal()">+ Tambah Produk</button>
+        </div>
+        <div class="table-wrap">
+          <table>
+            <thead>
+              <tr>
+                <th>Gambar</th>
+                <th>Nama</th>
+                <th>Harga</th>
+                <th>Kategori</th>
+                <th>Badge</th>
+                <th>Aksi</th>
+              </tr>
+            </thead>
+            <tbody id="productsTable"></tbody>
+          </table>
+        </div>
+      </div>
+
+      <!-- Orders Page -->
+      <div id="page-orders" class="admin-page" style="display:none;">
+        <div class="admin-header">
+          <h2>Kelola Pesanan</h2>
+        </div>
+        <div class="table-wrap">
+          <table>
+            <thead>
+              <tr>
+                <th>ID</th>
+                <th>Pelanggan</th>
+                <th>Item</th>
+                <th>Total</th>
+                <th>Status</th>
+                <th>Tanggal</th>
+                <th>Aksi</th>
+              </tr>
+            </thead>
+            <tbody id="ordersTable"></tbody>
+          </table>
+        </div>
+      </div>
+    </main>
+  </div>
+
+  <!-- Product Modal -->
+  <div class="modal-overlay" id="productModal">
+    <div class="modal">
+      <button class="close" onclick="document.getElementById('productModal').classList.remove('active')">&times;</button>
+      <h3 id="modalTitle">Tambah Produk</h3>
+      <form id="productForm" onsubmit="saveProduct(event)" style="margin-top:20px;">
+        <input type="hidden" id="productId">
+        <div class="form-group">
+          <label>Nama Produk *</label>
+          <input type="text" id="prodName" required>
+        </div>
+        <div class="form-group">
+          <label>Deskripsi *</label>
+          <textarea id="prodDesc" required></textarea>
+        </div>
+        <div class="form-group">
+          <label>Harga (Rp) *</label>
+          <input type="number" id="prodPrice" required min="0">
+        </div>
+        <div class="form-group">
+          <label>URL Gambar</label>
+          <input type="url" id="prodImage" placeholder="https://...">
+        </div>
+        <div class="form-group">
+          <label>Kategori *</label>
+          <select id="prodCategory" required>
+            <option value="mie">Mie Ayam</option>
+            <option value="bakso">Bakso</option>
+            <option value="paket">Paket</option>
+            <option value="minuman">Minuman</option>
+          </select>
+        </div>
+        <div class="form-group">
+          <label>Badge (opsional)</label>
+          <input type="text" id="prodBadge" placeholder="Terlaris, Best Seller, dll">
+        </div>
+        <button type="submit" class="btn btn-primary" style="width:100%;">Simpan Produk</button>
+      </form>
+    </div>
+  </div>
+
+  <script src="js/admin.js"></script>
+</body>
+</html>

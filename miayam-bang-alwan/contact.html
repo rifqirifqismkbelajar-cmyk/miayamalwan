@@ -1,0 +1,217 @@
+<!DOCTYPE html>
+<html lang="id">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Kontak & Pesan - Miayam & Bakso Bang Alwan</title>
+  <link rel="stylesheet" href="css/style.css">
+  <link rel="icon" href="data:image/svg+xml,<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 100 100'><text y='.9em' font-size='90'>🍜</text></svg>">
+</head>
+<body>
+  <nav class="navbar">
+    <div class="container">
+      <a href="index.html" class="logo"><span>🍜 Miayam Bang Alwan</span></a>
+      <ul class="nav-links">
+        <li><a href="index.html">Beranda</a></li>
+        <li><a href="menu.html">Menu</a></li>
+        <li><a href="about.html">Tentang Kami</a></li>
+        <li><a href="contact.html" class="active">Kontak & Pesan</a></li>
+        <li>
+          <a href="javascript:void(0)" class="cart-btn" onclick="openCart()">
+            🛒 Keranjang <span class="cart-count" style="display:none;">0</span>
+          </a>
+        </li>
+        <li><a href="admin.html" class="btn btn-outline btn-sm">Admin</a></li>
+      </ul>
+      <div class="hamburger"><span></span><span></span><span></span></div>
+    </div>
+  </nav>
+
+  <section class="section" id="order">
+    <div class="container">
+      <div class="section-title">
+        <h2>Hubungi & Pesan Online</h2>
+        <p>Isi form di bawah untuk memesan atau bertanya. Kami siap melayani!</p>
+      </div>
+
+      <div class="form-grid">
+        <!-- Order Form -->
+        <div class="form-card">
+          <h3>🛒 Form Pemesanan</h3>
+          <p style="color:#666;margin-bottom:20px;font-size:0.9rem;">Tambahkan menu dari halaman Menu ke keranjang, lalu checkout di sini.</p>
+          <form id="orderFormPage" onsubmit="submitOrderFromPage(event)">
+            <div class="form-group">
+              <label>Nama Lengkap *</label>
+              <input type="text" name="name" required placeholder="Nama Anda">
+            </div>
+            <div class="form-group">
+              <label>No. WhatsApp *</label>
+              <input type="tel" name="phone" required placeholder="08xxxxxxxxxx">
+            </div>
+            <div class="form-group">
+              <label>Alamat Pengiriman *</label>
+              <textarea name="address" required placeholder="Alamat lengkap + patokan"></textarea>
+            </div>
+            <div class="form-group">
+              <label>Catatan Pesanan</label>
+              <input type="text" name="note" placeholder="Contoh: Mie kering, level pedas, dll">
+            </div>
+            <div id="cartSummary" style="background:#E3F2FD;padding:14px;border-radius:8px;margin-bottom:18px;font-size:0.9rem;">
+              <strong>Keranjang:</strong> <span id="cartItemsText">Belum ada item. Silakan pilih menu dulu.</span>
+            </div>
+            <button type="submit" class="btn btn-primary" style="width:100%;">Kirim Pesanan via WhatsApp</button>
+          </form>
+        </div>
+
+        <!-- Contact Info + Message -->
+        <div>
+          <div class="form-card" style="margin-bottom:24px;">
+            <h3>📍 Informasi Kontak</h3>
+            <ul class="info-list">
+              <li>
+                <div class="icon">📍</div>
+                <div>
+                  <strong>Alamat</strong><br>
+                  Jl. Contoh No. 123, Kelurahan Contoh,<br>Kecamatan Contoh, Jakarta 12345
+                </div>
+              </li>
+              <li>
+                <div class="icon">📞</div>
+                <div>
+                  <strong>Telepon / WhatsApp</strong><br>
+                  0812-3456-7890
+                </div>
+              </li>
+              <li>
+                <div class="icon">⏰</div>
+                <div>
+                  <strong>Jam Operasional</strong><br>
+                  Senin - Minggu: 09.00 - 21.00 WIB
+                </div>
+              </li>
+              <li>
+                <div class="icon">🛵</div>
+                <div>
+                  <strong>Area Delivery</strong><br>
+                  Radius 5 km dari lokasi (gratis ongkir min. Rp 50.000)
+                </div>
+              </li>
+            </ul>
+          </div>
+
+          <div class="form-card">
+            <h3>✉️ Kirim Pesan</h3>
+            <form id="contactForm">
+              <div class="form-group">
+                <label>Nama</label>
+                <input type="text" name="cname" required>
+              </div>
+              <div class="form-group">
+                <label>Email / WhatsApp</label>
+                <input type="text" name="ccontact" required>
+              </div>
+              <div class="form-group">
+                <label>Pesan</label>
+                <textarea name="cmessage" required></textarea>
+              </div>
+              <button type="submit" class="btn btn-primary" style="width:100%;">Kirim Pesan</button>
+            </form>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <footer class="footer">
+    <div class="container">
+      <div class="footer-grid">
+        <div>
+          <h4>🍜 Miayam & Bakso Bang Alwan</h4>
+          <p>UMKM lokal yang menyajikan mie ayam dan bakso autentik dengan cita rasa khas keluarga sejak 2018.</p>
+        </div>
+        <div>
+          <h4>Menu</h4>
+          <p><a href="menu.html">Mie Ayam</a></p>
+          <p><a href="menu.html">Bakso</a></p>
+          <p><a href="menu.html">Paket Hemat</a></p>
+        </div>
+        <div>
+          <h4>Info</h4>
+          <p><a href="about.html">Tentang Kami</a></p>
+          <p><a href="contact.html">Kontak</a></p>
+          <p><a href="admin.html">Admin Panel</a></p>
+        </div>
+        <div>
+          <h4>Kontak</h4>
+          <p>📍 Jl. Contoh No. 123, Jakarta</p>
+          <p>📞 0812-3456-7890</p>
+          <p>⏰ 09.00 - 21.00 WIB</p>
+        </div>
+      </div>
+      <div class="footer-bottom">
+        &copy; 2026 Miayam & Bakso Bang Alwan. Dibuat dengan ❤️ untuk UMKM Indonesia.
+      </div>
+    </div>
+  </footer>
+
+  <div class="modal-overlay" id="cartModal">
+    <div class="modal">
+      <button class="close" onclick="document.getElementById('cartModal').classList.remove('active')">&times;</button>
+      <h3 style="margin-bottom:16px;">🛒 Keranjang Belanja</h3>
+      <div id="cartBody"></div>
+    </div>
+  </div>
+
+  <script src="js/script.js"></script>
+  <script>
+    // Update cart summary on this page
+    function updateCartSummary() {
+      const cart = getCart();
+      const el = document.getElementById('cartItemsText');
+      if (!el) return;
+      if (cart.length === 0) {
+        el.textContent = 'Belum ada item. Silakan pilih menu dulu.';
+      } else {
+        const total = cart.reduce((s, i) => s + i.price * i.qty, 0);
+        el.innerHTML = cart.map(i => `${i.name} x${i.qty}`).join(', ') + 
+          ` <br><strong>Total: ${formatPrice(total)}</strong>`;
+      }
+    }
+
+    function submitOrderFromPage(e) {
+      e.preventDefault();
+      const cart = getCart();
+      if (cart.length === 0) {
+        showToast('Keranjang masih kosong! Silakan pilih menu terlebih dahulu.', true);
+        return;
+      }
+      const form = e.target;
+      const order = {
+        id: Date.now(),
+        name: form.name.value,
+        phone: form.phone.value,
+        address: form.address.value,
+        note: form.note.value || '',
+        items: cart,
+        total: cart.reduce((s, i) => s + i.price * i.qty, 0),
+        status: 'Baru',
+        date: new Date().toLocaleString('id-ID')
+      };
+      const orders = JSON.parse(localStorage.getItem('orders') || '[]');
+      orders.unshift(order);
+      localStorage.setItem('orders', JSON.stringify(orders));
+      localStorage.setItem('cart', JSON.stringify([]));
+      updateCartBadge();
+      updateCartSummary();
+      form.reset();
+      showToast('Pesanan berhasil dikirim! Kami akan segera menghubungi Anda via WhatsApp.');
+    }
+
+    document.addEventListener('DOMContentLoaded', () => {
+      updateCartSummary();
+      // Refresh summary when cart changes
+      setInterval(updateCartSummary, 2000);
+    });
+  </script>
+</body>
+</html>

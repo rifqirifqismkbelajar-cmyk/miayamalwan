@@ -1,0 +1,183 @@
+<!DOCTYPE html>
+<html lang="id">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Miayam & Bakso Bang Alwan - Mie Ayam & Bakso Enak</title>
+  <meta name="description" content="Miayam dan Bakso Bang Alwan - Mie ayam dan bakso autentik dengan rasa khas rumahan. Pesan online sekarang!">
+  <link rel="stylesheet" href="css/style.css">
+  <link rel="icon" href="data:image/svg+xml,<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 100 100'><text y='.9em' font-size='90'>🍜</text></svg>">
+</head>
+<body>
+  <!-- Navbar -->
+  <nav class="navbar">
+    <div class="container">
+      <a href="index.html" class="logo">
+        <span>🍜 Miayam Bang Alwan</span>
+      </a>
+      <ul class="nav-links">
+        <li><a href="index.html" class="active">Beranda</a></li>
+        <li><a href="menu.html">Menu</a></li>
+        <li><a href="about.html">Tentang Kami</a></li>
+        <li><a href="contact.html">Kontak & Pesan</a></li>
+        <li>
+          <a href="javascript:void(0)" class="cart-btn" onclick="openCart()">
+            🛒 Keranjang <span class="cart-count" style="display:none;">0</span>
+          </a>
+        </li>
+        <li><a href="admin.html" class="btn btn-outline btn-sm">Admin</a></li>
+      </ul>
+      <div class="hamburger" aria-label="Menu">
+        <span></span><span></span><span></span>
+      </div>
+    </div>
+  </nav>
+
+  <!-- Hero -->
+  <section class="hero">
+    <div class="container">
+      <div class="hero-content">
+        <h1>Mie Ayam & Bakso <span>Bang Alwan</span></h1>
+        <p>Rasa autentik mie ayam dan bakso dengan bumbu rahasia keluarga. Segar, kenyal, dan bikin nagih! Pesan sekarang, diantar langsung ke rumah Anda.</p>
+        <div class="hero-buttons">
+          <a href="menu.html" class="btn btn-primary">Lihat Menu</a>
+          <a href="contact.html#order" class="btn btn-outline">Pesan Online</a>
+        </div>
+      </div>
+      <div class="hero-image">
+        <img src="https://images.unsplash.com/photo-1569718212165-3a8278d5f624?w=700&h=500&fit=crop" alt="Mie Ayam Bang Alwan" onerror="this.src='https://via.placeholder.com/700x500/BBDEFB/1E88E5?text=Mie+Ayam+Bang+Alwan'">
+        <div class="badge-float top">⭐ 4.9 • 500+ Review</div>
+        <div class="badge-float bottom">🔥 Buka Setiap Hari</div>
+      </div>
+    </div>
+  </section>
+
+  <!-- Featured Products -->
+  <section class="section">
+    <div class="container">
+      <div class="section-title">
+        <h2>Menu Favorit</h2>
+        <p>Pilihan terbaik yang paling digemari pelanggan setia Bang Alwan</p>
+      </div>
+      <div class="products-grid" id="featuredProducts">
+        <!-- Filled by JS -->
+      </div>
+      <div style="text-align:center;margin-top:36px;">
+        <a href="menu.html" class="btn btn-primary">Lihat Semua Menu →</a>
+      </div>
+    </div>
+  </section>
+
+  <!-- Why Us -->
+  <section class="section" style="background:white;">
+    <div class="container">
+      <div class="section-title">
+        <h2>Kenapa Pilih Bang Alwan?</h2>
+        <p>Kami berkomitmen memberikan kualitas terbaik di setiap mangkuk</p>
+      </div>
+      <div class="products-grid" style="grid-template-columns:repeat(auto-fit,minmax(240px,1fr));">
+        <div class="product-card" style="text-align:center;padding:30px 20px;">
+          <div style="font-size:2.5rem;margin-bottom:12px;">🍜</div>
+          <h3>Bahan Segar</h3>
+          <p class="desc">Ayam pilihan, bakso homemade, dan sayuran segar setiap hari.</p>
+        </div>
+        <div class="product-card" style="text-align:center;padding:30px 20px;">
+          <div style="font-size:2.5rem;margin-bottom:12px;">⏱️</div>
+          <h3>Cepat & Higienis</h3>
+          <p class="desc">Proses masak cepat dengan standar kebersihan tinggi.</p>
+        </div>
+        <div class="product-card" style="text-align:center;padding:30px 20px;">
+          <div style="font-size:2.5rem;margin-bottom:12px;">🛵</div>
+          <h3>Delivery Cepat</h3>
+          <p class="desc">Pesan online, kami antar langsung ke lokasi Anda.</p>
+        </div>
+        <div class="product-card" style="text-align:center;padding:30px 20px;">
+          <div style="font-size:2.5rem;margin-bottom:12px;">💰</div>
+          <h3>Harga Terjangkau</h3>
+          <p class="desc">Kualitas premium dengan harga yang ramah di kantong.</p>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- Testimonials -->
+  <section class="section">
+    <div class="container">
+      <div class="section-title">
+        <h2>Apa Kata Pelanggan?</h2>
+        <p>Testimoni nyata dari pecinta mie ayam & bakso</p>
+      </div>
+      <div class="testimonials-grid">
+        <div class="testimonial-card">
+          <div class="stars">★★★★★</div>
+          <p>"Mie ayamnya enak banget, baksonya kenyal, kuahnya pas. Langganan dari dulu!"</p>
+          <div class="author">— Rina, Jakarta</div>
+        </div>
+        <div class="testimonial-card">
+          <div class="stars">★★★★★</div>
+          <p>"Porsi besar, harga murah, dan selalu fresh. Recommended buat yang suka bakso urat!"</p>
+          <div class="author">— Budi, Depok</div>
+        </div>
+        <div class="testimonial-card">
+          <div class="stars">★★★★★</div>
+          <p>"Delivery cepat, packing rapi, rasa tetap mantap sampai rumah. Terima kasih Bang Alwan!"</p>
+          <div class="author">— Sari, Bekasi</div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- CTA -->
+  <section class="section" style="background:linear-gradient(135deg,#1E88E5,#1565C0);color:white;text-align:center;">
+    <div class="container">
+      <h2 style="font-size:2rem;margin-bottom:12px;">Siap Mencicipi Kelezatan Bang Alwan?</h2>
+      <p style="margin-bottom:28px;opacity:0.9;">Pesan sekarang dan nikmati mie ayam & bakso terbaik di kota Anda.</p>
+      <a href="contact.html#order" class="btn" style="background:white;color:#1565C0;">Pesan Sekarang</a>
+    </div>
+  </section>
+
+  <!-- Footer -->
+  <footer class="footer">
+    <div class="container">
+      <div class="footer-grid">
+        <div>
+          <h4>🍜 Miayam & Bakso Bang Alwan</h4>
+          <p>UMKM lokal yang menyajikan mie ayam dan bakso autentik dengan cita rasa khas keluarga sejak 2018.</p>
+        </div>
+        <div>
+          <h4>Menu</h4>
+          <p><a href="menu.html">Mie Ayam</a></p>
+          <p><a href="menu.html">Bakso</a></p>
+          <p><a href="menu.html">Paket Hemat</a></p>
+        </div>
+        <div>
+          <h4>Info</h4>
+          <p><a href="about.html">Tentang Kami</a></p>
+          <p><a href="contact.html">Kontak</a></p>
+          <p><a href="admin.html">Admin Panel</a></p>
+        </div>
+        <div>
+          <h4>Kontak</h4>
+          <p>📍 Jl. Contoh No. 123, Jakarta</p>
+          <p>📞 0812-3456-7890</p>
+          <p>⏰ 09.00 - 21.00 WIB</p>
+        </div>
+      </div>
+      <div class="footer-bottom">
+        &copy; 2026 Miayam & Bakso Bang Alwan. Dibuat dengan ❤️ untuk UMKM Indonesia.
+      </div>
+    </div>
+  </footer>
+
+  <!-- Cart Modal -->
+  <div class="modal-overlay" id="cartModal">
+    <div class="modal">
+      <button class="close" onclick="document.getElementById('cartModal').classList.remove('active')">&times;</button>
+      <h3 style="margin-bottom:16px;">🛒 Keranjang Belanja</h3>
+      <div id="cartBody"></div>
+    </div>
+  </div>
+
+  <script src="js/script.js"></script>
+</body>
+</html>
